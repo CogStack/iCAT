@@ -8,11 +8,19 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y update
 # Install a couple of things
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim build-essential libssl-dev zlib1g-dev libbz2-dev \
                 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh
+                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh sudo zip unzip
 
 
 RUN useradd -ms /bin/bash dgxcat
+# Do not care about security
+RUN echo "dgxcat:admin" | chpasswd
+RUN usermod -aG sudo dgxcat 
 RUN chsh -s /bin/zsh dgxcat
+
+# Crate some dirs and chown
+RUN mkdir /data /home/dgxcat/projects /home/dgxcat/models && \
+    chown dgxcat:dgxcat /data && \
+    chown -R dgxcat:dgxcat /home/dgxcat
 
 # Switch user
 USER dgxcat
