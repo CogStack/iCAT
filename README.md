@@ -1,6 +1,6 @@
 # dgxCAT 
 
-A docker container for CogStack/MedCAT/HuggingFace development in isolated environments. This is meant for envs that are completely locked-out, everything has to be prebuilt and then moved. It contains the basic tools necessary to interact with the CogStack platform + GPU support + MedCAT + Transformers from Huggingface.
+A docker container for CogStack/MedCAT/HuggingFace development in isolated environments. This is meant for envs that are completely locked-out, everything has to be prebuilt and then moved. It contains the basic tools necessary to interact with the CogStack platform + GPU support + MedCAT + Transformers from HuggingFace.
 
 
 ### How to 
