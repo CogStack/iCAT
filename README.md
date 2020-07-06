@@ -14,7 +14,7 @@ A docker container for CogStack/MedCAT/HuggingFace development in isolated envir
 ### How to Build 
 
 1. Clone the repository
-2. Run `docker-compose up -f docker-compose-build.yml`
+2. Run `docker-compose -f docker-compose-build.yml build`
 3. Push to docker Hub or save to a file
 
 
