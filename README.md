@@ -5,7 +5,10 @@ A docker container for CogStack/MedCAT/HuggingFace development in isolated envir
 
 ### How to run with GPU support
 0. Clone the repo and open the destination folder (or just create a `dgxcat/models` folder for mounting)
-1. To run (and download) the container do: `docker run -t -d --name dgxcat --hostname dgxcat --user dgxcat -p 8888:8888 --gpus all --mount type=bind,source="$(PWD)/dgxcat/models",target=/home/dgxcat/models --mount source=data,target=/data --mount source=projects,target=/home/dgxcat/projects rattel/dgxcat:latest zsh`
+1. To run (and download) the container do: 
+```
+docker run -t -d --name dgxcat --hostname dgxcat --user dgxcat -p 8888:8888 --gpus all --mount type=bind,source="$(PWD)/dgxcat/models",target=/home/dgxcat/models --mount source=data,target=/data --mount source=projects,target=/home/dgxcat/projects rattel/dgxcat:latest zsh
+```
 3. Connect to the container using `docker exec -it <container_id> zsh`
 4. Activate the environment `source /home/dgxcat/.venv/play/bin/activate`
 5. If the container stops and you want to restart it again, use: `docker start dgxcat`
