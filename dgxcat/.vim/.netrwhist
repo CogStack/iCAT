@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/wish/Google Drive/catriana/Work/doxray/classification'
+let g:netrw_dirhist_2='/Users/wish/Google Drive/catriana/Work/doxray/core/embedding/embedding/glove/src'
+let g:netrw_dirhist_3='/Users/wish/Work/doclan/frontend/src/app/chat'
+let g:netrw_dirhist_4='/Users/wish/.config'
+let g:netrw_dirhist_5='/Users/wish/.pyenv'
