@@ -29,7 +29,7 @@ docker run -t -d --name icat --hostname icat --user icat -p 8888:8888 --gpus all
 * Basic `ubuntu` packages pre-installed
 * Configuration for `vim` and `zsh`
 * Base python requirements for CogStack/MedCAT/HuggingFace pre-installed
-* Volumes for data and projects
+* Volumes for data, models and projects
 * Open ports for jupyter notebooks (8888)
 * Pre-downloaded GPTv2 and BERT models
 
