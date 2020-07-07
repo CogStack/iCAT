@@ -1,14 +1,14 @@
 version: '3.4'
 
 services:
-  dgxcat:
-    container_name: dgxcat
-    hostname: dgxcat
+  icat:
+    container_name: icat
+    hostname: icat
     restart: always
-    image: rattel/dgxcat:latest
+    image: rattel/icat:latest
     volumes:
       - data:/data
-      - projects:/home/dgxcat/projects
+      - projects:/home/icat/projects
     ports:
       - "8888:8888"
     command: tail -F bla 

@@ -1,7 +1,7 @@
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
 zstyle ':completion:*' max-errors 2
-zstyle :compinstall filename '/home/dgxcat/.zshrc'
+zstyle :compinstall filename '/home/icat/.zshrc'
 
 autoload -Uz compinit
 compinit

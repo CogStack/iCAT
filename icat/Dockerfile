@@ -1,5 +1,5 @@
 FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-devel
-ENV PATH="${PATH}:/home/dgxcat/.local/bin"
+ENV PATH="${PATH}:/home/icat/.local/bin"
 
 
 # Update everything
@@ -11,34 +11,34 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim build-essential libs
                 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh sudo zip unzip
 
 
-RUN useradd -ms /bin/bash dgxcat
+RUN useradd -ms /bin/bash icat
 # Do not care about security
-RUN echo "dgxcat:admin" | chpasswd
-RUN usermod -aG sudo dgxcat 
-RUN chsh -s /bin/zsh dgxcat
+RUN echo "icat:admin" | chpasswd
+RUN usermod -aG sudo icat 
+RUN chsh -s /bin/zsh icat
 
 # Crate some dirs and chown
-RUN mkdir /data /home/dgxcat/projects /home/dgxcat/models && \
-    chown dgxcat:dgxcat /data && \
-    chown -R dgxcat:dgxcat /home/dgxcat
+RUN mkdir /data /home/icat/projects /home/icat/models && \
+    chown icat:icat /data && \
+    chown -R icat:icat /home/icat
 
 # Switch user
-USER dgxcat
-WORKDIR /home/dgxcat
+USER icat
+WORKDIR /home/icat
 
 # Add everything
-ADD . /home/dgxcat
+ADD . /home/icat
 
 # Create and activate an environment
-RUN mkdir /home/dgxcat/.venv
+RUN mkdir /home/icat/.venv
 # Activate
-RUN python -m venv /home/dgxcat/.venv/play
-ENV VIRTUAL_ENV=/home/dgxcat/.venv/play
+RUN python -m venv /home/icat/.venv/play
+ENV VIRTUAL_ENV=/home/icat/.venv/play
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN python -m pip install pip --upgrade
-RUN python -m pip install -r /home/dgxcat/requirements.txt --upgrade
+RUN python -m pip install -r /home/icat/requirements.txt --upgrade
 RUN python -m pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.2.4/en_core_sci_md-0.2.4.tar.gz
 
 # Add model download for transformers
-RUN python /home/dgxcat/download_models.py
+RUN python /home/icat/download_models.py
