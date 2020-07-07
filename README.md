@@ -12,7 +12,8 @@ docker run -t -d --name icat --hostname icat --user icat -p 8888:8888 --gpus all
 2. If you do not want GPU support, remove the `--gpus all` and run
 3. Connect to the container using `docker exec -it <container_id> zsh`
 4. Activate the environment `source /home/icat/.venv/play/bin/activate`
-5. If the container stops and you want to restart it again, use: `docker start icat`
+    * Jupyter: First set the password with `jupyter notebook password` and second, run using `nohup jupyter notebook --ip 0.0.0.0 &`. Now it will be available at `<server_ip>:8888`
+5. If the container stops and you want to start it again, use: `docker start icat`
 
 
 ### How to Build 
