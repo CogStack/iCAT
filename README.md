@@ -4,7 +4,7 @@ A docker container for [CogStack](https://cogstack.org/)/[MedCAT](https://github
 
 
 ### How to run [with GPU support]
-0. Clone the repo and open the destination folder (or just create a `icat/models` folder for mounting)
+0. Clone the repo and open the destination folder (or run `mkdir -p icat/models` folder for mounting)
 1. To run (and download) the container do: 
 ```
 docker run -t -d --name icat --hostname icat --user icat -p 8888:8888 --gpus all --mount type=bind,source="$(PWD)/icat/models",target=/home/icat/models --mount source=data,target=/data --mount source=projects,target=/home/icat/projects rattel/icat:latest zsh
