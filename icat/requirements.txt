@@ -16,3 +16,6 @@ Shapely==1.7.0
 nltk==3.5
 more_itertools==8.4.0
 beautifulsoup4==4.9.1
+psycopg2~=2.7
+pyodbc~=4.0
+pymssql~=2.1
