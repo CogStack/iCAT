@@ -8,8 +8,20 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y update
 # Install a couple of things
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim build-essential libssl-dev zlib1g-dev libbz2-dev \
                 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh sudo zip unzip
+                xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh sudo zip unzip \
+                apt-utils gnupg libssl1.0.0 libssl-dev libpq-dev
 
+
+# uses Ubuntu 16.04 as base image
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
+# install SQL Server remaining packages
+RUN DEBIAN_FRONTEND="noninteractive" apt-get update && \
+    DEBIAN_FRONTEND="noninteractive" ACCEPT_EULA=Y apt-get install -y msodbcsql17 && \
+    DEBIAN_FRONTEND="noninteractive" ACCEPT_EULA=Y apt-get install -y mssql-tools && \
+    DEBIAN_FRONTEND="noninteractive" apt-get -y --no-install-recommends install \
+	   unixodbc unixodbc-dev odbcinst
 
 RUN useradd -ms /bin/bash icat
 # Do not care about security
