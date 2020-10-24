@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-devel
+FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-runtime
 ENV PATH="${PATH}:/home/icat/.local/bin"
 
 
@@ -16,6 +16,10 @@ RUN useradd -ms /bin/bash icat
 RUN echo "icat:admin" | chpasswd
 RUN usermod -aG sudo icat 
 RUN chsh -s /bin/zsh icat
+
+# Add the medcat group - additional group used for icat
+RUN groupadd medcat -g 1111
+RUN usermod -a -G icat medcat
 
 # Crate some dirs and chown
 RUN mkdir /data /home/icat/projects /home/icat/models && \
@@ -41,4 +45,7 @@ RUN python -m pip install -r /home/icat/requirements.txt --upgrade
 RUN python -m pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.2.4/en_core_sci_md-0.2.4.tar.gz
 
 # Add model download for transformers
-RUN python /home/icat/download_models.py
+#RUN python /home/icat/download_models.py
+
+# make executable
+#RUN chmod a+x /home/icat/run.sh
