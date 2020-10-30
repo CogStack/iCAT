@@ -4,13 +4,13 @@ A docker container for [CogStack](https://cogstack.org/)/[MedCAT](https://github
 
 
 ### How to run [with GPU support]
-0. Clone the repo and open the destination folder (or just create a `icat/models` folder for mounting)
+0. Clone the repo and open the destination folder (or run `mkdir -p icat/models` folder for mounting)
 1. To run (and download) the container do: 
 ```
 docker run -t -d --name icat --hostname icat --user icat -p 8888:8888 --gpus all --mount type=bind,source="$(PWD)/icat/models",target=/home/icat/models --mount source=data,target=/data --mount source=projects,target=/home/icat/projects rattel/icat:latest zsh
 ```
 2. If you do not want GPU support, remove the `--gpus all` and run
-3. Connect to the container using `docker exec -it <container_id> zsh`
+3. Connect to the container using `docker exec -it icat zsh`
 4. Activate the environment `source /home/icat/.venv/play/bin/activate`
     * Jupyter: First set the password with `jupyter notebook password` and second, run using `nohup jupyter notebook --ip 0.0.0.0 &`. Now it will be available at `<server_ip>:8888`
 5. If the container stops and you want to start it again, use: `docker start icat`
@@ -29,7 +29,7 @@ docker run -t -d --name icat --hostname icat --user icat -p 8888:8888 --gpus all
 * Basic `ubuntu` packages pre-installed
 * Configuration for `vim` and `zsh`
 * Base python requirements for CogStack/MedCAT/HuggingFace pre-installed
-* Volumes for data and projects
+* Volumes for data, models and projects
 * Open ports for jupyter notebooks (8888)
 * Pre-downloaded GPTv2 and BERT models
 
