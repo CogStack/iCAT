@@ -12,7 +12,7 @@ services:
       - data:/data
       - projects:/home/icat/projects
     ports:
-      - "8888:8888"
+      - "8887:8888"
     command: /bin/zsh /home/icat/run.sh
 volumes:
   data:

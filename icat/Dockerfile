@@ -54,7 +54,6 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN python -m pip install pip --upgrade
 RUN python -m pip install -r /home/icat/requirements.txt --upgrade
-RUN python -m pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.2.4/en_core_sci_md-0.2.4.tar.gz
 
 # Add model download for transformers
 #RUN python /home/icat/download_models.py
