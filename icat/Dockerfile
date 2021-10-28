@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-runtime
+FROM pytorch/pytorch:1.7.1-cuda11.0-cudnn8-runtime
 ENV PATH="${PATH}:/home/icat/.local/bin"
 
 
@@ -9,7 +9,8 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim build-essential libssl-dev zlib1g-dev libbz2-dev \
                 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
                 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git htop zsh sudo zip unzip \
-                apt-utils gnupg libssl1.0.0 libssl-dev libpq-dev
+                apt-utils gnupg libssl1.0.0 libssl-dev libpq-dev openssh-server openssh-client \
+                keychain git-lfs
 
 
 # uses Ubuntu 16.04 as base image
@@ -55,8 +56,10 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN python -m pip install pip --upgrade
 RUN python -m pip install -r /home/icat/requirements.txt --upgrade
 
+RUN python -m spacy download en_core_web_md
+
 # Add model download for transformers
-#RUN python /home/icat/download_models.py
+RUN python /home/icat/download_models.py
 
 # make executable
 #RUN chmod a+x /home/icat/run.sh

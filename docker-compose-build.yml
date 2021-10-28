@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   icat:
-    container_name: icat
+    container_name: icat2
     hostname: icat
     restart: always
     build:

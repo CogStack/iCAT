@@ -31,3 +31,5 @@ function precmd(){ echo -n "\033]0;${PWD/#$HOME/~}\007" }
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+source $HOME/.keychain/icat-sh
