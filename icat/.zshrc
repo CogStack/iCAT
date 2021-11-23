@@ -33,3 +33,15 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 source $HOME/.keychain/icat-sh
+
+gitclone() {
+        git clone https://gitlab.com/znhs/$1.git
+}
+
+gitadd() {
+        git remote add origin https://gitlab.com/znhs/$1.git
+}
+
+gitp() {
+        git push origin master
+}

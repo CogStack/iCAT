@@ -10,4 +10,4 @@ psycopg2~=2.7
 pyodbc~=4.0
 pymssql~=2.1
 plotly==5.3.1
-medcat==1.2.3
+medcat==1.2.5
