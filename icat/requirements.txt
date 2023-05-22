@@ -1,7 +1,7 @@
 matplotlib==3.2.2
 Pillow==8.4.0
 python-dateutil==2.8.1
-requests==2.24.0
+requests==2.31.0
 jupyter==1.0.0
 Shapely==1.7.0
 more_itertools==8.4.0
